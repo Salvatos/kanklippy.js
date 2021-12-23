@@ -795,6 +795,7 @@ clippy.Balloon.prototype = {
     _sayWords:function (text, hold, complete) {
         this._active = true;
         this._hold = hold;
+        text = text + "\u2006\u200B\u2006\u200B\u2006\u200B\u2006\u200B\u2006\u200B\u2006\u200B\u2006\u200B\u2006\u200B\u2006\u200B\u2006\u200B";
         var words = text.split(/[^\S-]/);
         var time = this.WORD_SPEAK_TIME;
         var el = this._content;
@@ -806,7 +807,8 @@ clippy.Balloon.prototype = {
             if (idx > words.length) {
                 this._active = false;
                 if (!this._hold) {
-                    window.setTimeout("complete();this.hide();", 5000);
+                    complete();
+                    this.hide();
                 }
             } else {
                 el.text(words.slice(0, idx).join(' '));
