@@ -806,8 +806,7 @@ clippy.Balloon.prototype = {
             if (idx > words.length) {
                 this._active = false;
                 if (!this._hold) {
-                    complete();
-                    this.hide();
+                    window.setTimeout("complete();this.hide();", 5000);
                 }
             } else {
                 el.text(words.slice(0, idx).join(' '));
